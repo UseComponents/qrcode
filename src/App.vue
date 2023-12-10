@@ -20,12 +20,13 @@ const selectChange = (e: any) => {
 </script>
 
 <template>
-  <QRCode value="https://antdv.com" />
+  <QRCode value="https://antdv.com" bg-color="#cccccc" />
   <QRCode value="https://antdv.com" color="#cccccc"/>
   <hr />
   <QRCode value="https://antdv.com" icon="https://www.antdv.com/assets/logo.1ef800a8.svg" />
   <hr />
-  <QRCode value="https://antdv.com" type="svg" />
+  <QRCode value="https://antdv.com" type="svg" status="loading" />
+  <QRCode value="https://antdv.com" type="svg" status="expired" />
   <hr />
   <button @click="decline">- small</button>
   <button @click="increase">+ large</button>
