@@ -10,12 +10,12 @@ const QRCode = defineComponent({
   name: 'QRCode',
   props: { ...qrcodeProps() },
   setup(props, { expose }) {
-    const canvasRef = ref()
+    const qrCodeCanvas = ref()
     expose({
-      toDataURL() {
-        return canvasRef.value?.toDataURL()
-      }
-    })
+      toDataURL: (type?: string, quality?: any) => {
+        return qrCodeCanvas.value?.toDataURL(type, quality);
+      },
+    });
 
     return () => {
       const {
@@ -62,7 +62,7 @@ const QRCode = defineComponent({
               {status === 'expired' && <div class={['qrcodeExpired']}>已过期</div>}
             </div>
           )}
-          {type === 'svg' ? <QRCodeSVG {...qrCodeProps} /> : <QRCodeCanvas ref={canvasRef.value} {...qrCodeProps} />}
+          {type === 'svg' ? <QRCodeSVG {...qrCodeProps} /> : <QRCodeCanvas ref={qrCodeCanvas} {...qrCodeProps} />}
         </div>
       )
     }
