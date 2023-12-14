@@ -5,17 +5,17 @@
 ## 安装
 
 ```sh
-npm install qrcode.vue3
+npm install qrcode.vue-next
 ```
 
 ## 使用
 
-`qrcode.vue3`导出三个组件，支持以SVG或Canvas形式呈现。通常建议使用SVG，因为它更灵活，但Canvas可能更可取。
+`qrcode.vue-next`导出三个组件，支持以SVG或Canvas形式呈现。通常建议使用SVG，因为它更灵活，但Canvas可能更可取。
 
 ### `QRCodeCanvas`
 
 ```js
-import QRCode fom 'qrcode.vue3';
+import QRCode fom 'qrcode.vue-next';
 
 <template>
   <QRCode value="https://vuejs.org/" />
@@ -25,7 +25,7 @@ import QRCode fom 'qrcode.vue3';
 ### `QRCodeSVG`
 
 ```js
-import QRCode fom 'qrcode.vue3';
+import QRCode fom 'qrcode.vue-next';
 
 <template>
   <QRCode value="https://vuejs.org/" type="svg" />
@@ -74,7 +74,7 @@ import QRCode fom 'qrcode.vue3';
 
 ## 自定义样式
 
-`qrcode.vue3`将通过任何附加的道具传递到底层DOM节点（`＜svg＞`或`＜canvas＞`）。这允许使用内联“style”或自定义“class”来自定义渲染。一个常见的用途是支持响应式布局。
+`qrcode.vue-next`将通过任何附加的道具传递到底层DOM节点（`＜svg＞`或`＜canvas＞`）。这允许使用内联“style”或自定义“class”来自定义渲染。一个常见的用途是支持响应式布局。
 
 **注意:** 为了在高密度显示器上渲染`＜canvas＞`中的二维码，我们缩放画布元素以包含适当数量的像素，然后使用内联样式进行缩小。我们将合并任何其他样式，自定义的`height`和`width`将覆盖我们原本的值。这允许缩放到百分比_but_如果缩放超过`size`，您将遇到模糊的图像。建议在渲染到`＜canvas＞`时传递适当的大小.
 

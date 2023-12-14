@@ -26,3 +26,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# build
+es/*
+lib/*
+dist/*
+vite.config.ts.timestamp*

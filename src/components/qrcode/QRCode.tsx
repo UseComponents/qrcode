@@ -146,8 +146,8 @@ export const QRCodeCanvas = defineComponent({
   props: { ...qrProps(), level: String, bgColor: String, fgColor: String, marginSize: Number },
   setup(props, { attrs, expose }) {
     const imgSrc = computed(() => props.imageSettings?.src)
-    const _canvas = shallowRef<HTMLCanvasElement>(null)
-    const _image = shallowRef<HTMLImageElement>(null)
+    const _canvas = shallowRef<HTMLCanvasElement | null>(null)
+    const _image = shallowRef<HTMLImageElement | null>(null)
     const isImgLoaded = shallowRef(false)
     expose({
       toDataURL: (type?: string, quality?: any) => {
@@ -174,7 +174,7 @@ export const QRCodeCanvas = defineComponent({
             return
           }
 
-          let cells = qrcodegen.QrCode.encodeText(value, ERROR_LEVEL_MAP[level]).getModules()
+          let cells = qrcodegen.QrCode.encodeText(value!, ERROR_LEVEL_MAP[level]).getModules()
           const margin = getMarginSize(includeMargin, marginSize)
           const numCells = cells.length + margin * 2
           const calculatedImageSettings = getImageSettings(cells, size, margin, imageSettings)
@@ -281,11 +281,11 @@ export const QRCodeSVG = defineComponent({
   setup(props) {
     let cells = null
     let margin = null
-    let numCells = null
+    let numCells: unknown = null
     let calculatedImageSettings = null
 
-    let fgPath = null
-    let image = null
+    let fgPath: any = null
+    let image: unknown = null
 
     watchEffect(() => {
       const {
@@ -297,7 +297,7 @@ export const QRCodeSVG = defineComponent({
         imageSettings
       } = props
 
-      cells = qrcodegen.QrCode.encodeText(value, ERROR_LEVEL_MAP[level]).getModules()
+      cells = qrcodegen.QrCode.encodeText(value!, ERROR_LEVEL_MAP[level]).getModules()
 
       margin = getMarginSize(includeMargin, marginSize)
       numCells = cells.length + margin * 2

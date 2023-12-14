@@ -7,6 +7,9 @@
  */
 
 'use strict'
+type bit = number
+type byte = number
+type int = number
 
 // Appends the given number of low-order bits of the given value
 // to the given buffer. Requires 0 <= len <= 31 and 0 <= val < 2^len.
@@ -31,9 +34,6 @@ function assert(cond: boolean): void {
 }
 
 namespace qrcodegen {
-  type bit = number
-  type byte = number
-  type int = number
 
   /*---- QR Code symbol class ----*/
 

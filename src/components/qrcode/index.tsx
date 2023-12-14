@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import type { App, Plugin, ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from 'vue'
 import { QRCodeCanvas, QRCodeSVG } from './QRCode'
 import { qrcodeProps } from './interface'
 import './index.css'
@@ -69,10 +69,4 @@ const QRCode = defineComponent({
   }
 })
 
-QRCode.install = (app: App) => {
-  app.component(QRCode.name, QRCode)
-}
-
-export default QRCode as typeof QRCode & {
-  install: Plugin
-}
+export default QRCode

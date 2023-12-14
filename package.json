@@ -1,7 +1,41 @@
 {
-  "name": "qrcode",
-  "version": "0.0.0",
-  "private": true,
+  "name": "qrcode.vue-next",
+  "type": "module",
+  "version": "0.0.5",
+  "keywords": [
+    "qrcode",
+    "vue",
+    "vue-qrcode",
+    "qrcode.vue",
+    "qrcode-vue-next",
+    "qrcode.vue3",
+    "vue3-qrcode",
+    "vue3-qrcode-next"
+  ],
+  "author": "selicens",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/own-components/qrcode.git"
+  },
+  "homepage": "https://github.com/own-components/qrcode",
+  "exports": {
+    ".": {
+      "types": "./es/components/index.d.ts",
+      "import": "./es/components/index.js",
+      "require": "./lib/components/index.js"
+    },
+    "./es/*": "./es/*",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json",
+    "./*": "./*"
+  },
+  "main": "./es/components/index.js",
+  "types": "./es/components/es/index.d.ts",
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
@@ -13,6 +47,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "vite-plugin-dts": "^3.6.4",
     "vue": "^3.3.4"
   },
   "devDependencies": {
