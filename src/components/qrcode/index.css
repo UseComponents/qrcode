@@ -1,47 +1,49 @@
 .qrcode {
-    box-sizing: border-box;
-    margin: 0;
-    color: rgba(0, 0, 0, 0.88);
-    font-size: 14px;
-    line-height: 1.5714285714285714;
-    list-style: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid rgba(5, 5, 5, 0.06);
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(5, 5, 5, 0.06);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 .qrcode > .qrcodeIcon {
-    margin-block-end: 8px;
-    font-size: 14px;
+  margin-block-end: 8px;
+  font-size: 14px;
 }
 .qrcode > .qrcodeMask {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    color: rgba(0, 0, 0, 0.88);
-    line-height: 1.5714285714285714px;
-    background: rgba(255, 255, 255, 0.96);
-    text-align: center;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 0, 0, 0.88);
+  line-height: 1.5714285714285714px;
+  background: rgba(255, 255, 255, 0.96);
+  text-align: center;
 }
 .qrcode > .qrcodeMask > .qrcodeExpired {
-    color: rgba(0, 0, 0, 0.88);
+  color: rgba(0, 0, 0, 0.88);
 }
 
 .qrcode-borderless {
- border-color: transparent;
+  border-color: transparent;
 }

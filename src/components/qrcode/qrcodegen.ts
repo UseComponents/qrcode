@@ -34,7 +34,6 @@ function assert(cond: boolean): void {
 }
 
 namespace qrcodegen {
-
   /*---- QR Code symbol class ----*/
 
   /*
