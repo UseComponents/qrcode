@@ -12,7 +12,7 @@ npm install qrcode.vue-next
 
 `qrcode.vue-next`导出三个组件，支持以SVG或Canvas形式呈现。通常建议使用SVG，因为它更灵活，但Canvas可能更可取。
 
-### `QRCodeCanvas`
+### `Canvas`
 
 ```js
 import QRCode fom 'qrcode.vue-next';
@@ -22,7 +22,7 @@ import QRCode fom 'qrcode.vue-next';
 </template>
 ```
 
-### `QRCodeSVG`
+### `SVG`
 
 ```js
 import QRCode fom 'qrcode.vue-next';
@@ -30,6 +30,37 @@ import QRCode fom 'qrcode.vue-next';
 <template>
   <QRCode value="https://vuejs.org/" type="svg" />
 </template>
+```
+
+### `自定义`
+
+如果不满足封装的QRCode提供的样式与功能，可以直接导出`QRCodeCanvas`或`QRCodeSVG`来使用，并传递所需props，然后就可以自由创造了。
+
+```js
+import QRCode, { QRCodeCanvas, QRCodeSVG } from 'qrcode.vue-next';
+
+const qrcodeProps = {
+  value: 'https://vuejs.org',
+  size: 134,
+  level: 'M',
+  bgColor: 'transparent',
+  fgColor: 'rgba(0, 0, 0, 0.88)',
+  imageSettings: {
+    src: 'https://vuejs.org/images/logo.png',
+    x: undefined,
+    y: undefined,
+    height: 40,
+    width: 40,
+    excavate: true
+  }
+}
+
+<template>
+  <QRCodeCanvas v-bind="qrcodeProps" />
+  <br />
+  <QRCodeSVG v-bind="qrcodeProps" />
+</template>
+
 ```
 
 ## 封装后的API，基于antd

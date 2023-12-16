@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import QRCode from './components'
+import QRCode, { QRCodeCanvas, QRCodeSVG } from './components'
+import type { QRCodeProps } from './components'
+
 const size = ref(160)
-const level = ref('L')
+const level = ref<QRCodeProps['errorLevel']>('L')
 const qrcodeCanvasRef = ref()
 const decline = () => {
   size.value = size.value - 10
@@ -20,7 +22,6 @@ const selectChange = (e: any) => {
   level.value = e.target.value
 }
 const downloadChange = async () => {
-  console.log('download')
   try {
     const url = await qrcodeCanvasRef.value.toDataURL()
     console.log(url, qrcodeCanvasRef.value.toDataURL)
@@ -34,13 +35,28 @@ const downloadChange = async () => {
     console.log(error)
   }
 }
+const qrcodeProps = {
+  value: 'https://vuejs.org',
+  size: 134,
+  level: 'M',
+  bgColor: 'transparent',
+  fgColor: 'rgba(0, 0, 0, 0.88)',
+  imageSettings: {
+    src: 'https://vuejs.org/images/logo.png',
+    x: undefined,
+    y: undefined,
+    height: 40,
+    width: 40,
+    excavate: true
+  }
+}
 </script>
 
 <template>
   <QRCode value="https://vuejs.org" bg-color="#cccccc" />
   <QRCode value="https://vuejs.org" color="#cccccc" />
   <hr />
-  <QRCode value="https://vuejs.org" icon="https://www.antdv.com/assets/logo.1ef800a8.svg" />
+  <QRCode value="https://vuejs.org" icon="https://vuejs.org/images/logo.png" />
   <hr />
   <QRCode value="https://vuejs.org" type="svg" status="loading" />
   <QRCode value="https://vuejs.org" type="svg" status="expired" />
@@ -51,7 +67,7 @@ const downloadChange = async () => {
   <QRCode
     value="https://vuejs.org"
     type="svg"
-    icon="https://www.antdv.com/assets/logo.1ef800a8.svg"
+    icon="https://vuejs.org/images/logo.png"
     :size="size"
     :iconSize="size / 4"
     error-level="Q"
@@ -70,4 +86,8 @@ const downloadChange = async () => {
   <hr />
   <QRCode value="https://vuejs.org" ref="qrcodeCanvasRef" />
   <button @click="downloadChange">下载</button>
+  <hr />
+  <QRCodeCanvas v-bind="qrcodeProps" />
+  <br />
+  <QRCodeSVG v-bind="qrcodeProps" />
 </template>
