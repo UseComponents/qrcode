@@ -1,7 +1,7 @@
 {
   "name": "qrcode.vue-next",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "qrcode",
     "vue",
@@ -12,13 +12,13 @@
     "vue3-qrcode",
     "vue3-qrcode-next"
   ],
-  "author": "selicens",
+  "author": "UseComponents",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/useComponents/qrcode.git"
+    "url": "git+https://github.com/UseComponents/qrcode.git"
   },
-  "homepage": "https://github.com/useComponents/qrcode",
+  "homepage": "https://github.com/UseComponents/qrcode",
   "exports": {
     ".": {
       "types": "./es/components/index.d.ts",
@@ -44,7 +44,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "build:docs": "vite build --config vite.build.config.ts"
   },
   "dependencies": {
     "vue": "^3.3.11"
