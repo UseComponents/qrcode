@@ -1,7 +1,7 @@
 {
   "name": "qrcode.vue-next",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [
     "qrcode",
     "vue",
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/UseComponents/qrcode.git"
   },
-  "homepage": "https://github.com/UseComponents/qrcode",
+  "homepage": "https://usecomponents.github.io/qrcode/",
   "exports": {
     ".": {
       "types": "./es/components/index.d.ts",

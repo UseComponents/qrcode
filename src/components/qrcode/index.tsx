@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, SlotsType } from 'vue'
 import { QRCodeCanvas, QRCodeSVG } from './QRCode'
 import { qrcodeProps } from './interface'
 import './index.css'
@@ -9,7 +9,11 @@ export type QRCodeProps = Partial<ExtractPropTypes<ReturnType<typeof qrcodeProps
 const QRCode = defineComponent({
   name: 'QRCode',
   props: { ...qrcodeProps() },
-  setup(props, { expose }) {
+  slots: Object as SlotsType<{
+    status?: any
+    icon?: any
+  }>,
+  setup(props, { expose, slots }) {
     const qrCodeCanvas = ref()
     expose({
       toDataURL: (type?: string, quality?: any) => {
@@ -58,8 +62,8 @@ const QRCode = defineComponent({
         >
           {status !== 'active' && (
             <div class={['qrcodeMask']}>
-              {status === 'loading' && <div>加载中...</div>}
-              {status === 'expired' && <div class={['qrcodeExpired']}>已过期</div>}
+              {status === 'loading' && (slots.status?.() ?? <div>加载中...</div>)}
+              {status === 'expired' && <div class={['qrcodeExpired']}>{ slots.status?.() ?? '已过期' }</div>}
             </div>
           )}
           {type === 'svg' ? (

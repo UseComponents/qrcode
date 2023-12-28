@@ -58,7 +58,9 @@ const qrcodeProps = {
   <hr />
   <QRCode value="https://vuejs.org" icon="https://vuejs.org/images/logo.png" />
   <hr />
-  <QRCode value="https://vuejs.org" type="svg" status="loading" />
+  <QRCode value="https://vuejs.org" type="svg" status="loading">
+    <template #status>加载中...</template>
+  </QRCode>
   <QRCode value="https://vuejs.org" type="svg" status="expired" />
   <hr />
   <button @click="decline">- small</button>
@@ -90,4 +92,8 @@ const qrcodeProps = {
   <QRCodeCanvas v-bind="qrcodeProps" />
   <br />
   <QRCodeSVG v-bind="qrcodeProps" />
+  <hr />
+  <QRCode>
+    <template #status></template>
+  </QRCode>
 </template>

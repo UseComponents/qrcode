@@ -87,7 +87,7 @@ const qrcodeProps = {
 | `fgColor`       | `string`                     | `"#000000"`   | CSS color |
 | `level`         | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |
 | `minVersion`    | `number` (1-40)              | `1`           | QR Code versions are 1-40. The optimal (lowest) version is determined for the `value` provided, using this minimum as the lower bound.
-| `includeMargin` | `boolean`                    | `false`       | **DEPRECATED**. This is being remvoed in favor of `marginSize` |
+| `includeMargin` | `boolean`                    | `false`       | **DEPRECATED**. This is being removed in favor of `marginSize` |
 | `marginSize`    | `number`                     | `0`           | Specifies the number of _modules_ to use for margin around the symbol. The QR Code specification requires `4`, however you may use other values. Values will be turned to integers with `Math.floor`. Overrides `includeMargin` default value when specified |
 | `imageSettings` | `object`                     |               | See below |
 
@@ -113,4 +113,4 @@ const qrcodeProps = {
 
 ## 编码模式
 
-`qrcode.vue3`仅支持在单个段中对文本进行编码。所使用的编码库进行最少的检测，以确定所编码的文本是否可以遵循数字或字母数字模式的优化路径，从而允许对更多数据进行编码。否则，它将按照字节模式进行编码。此模式包括支持多字节Unicode字符（如汉字），但不支持优化的汉字编码模式。.
+`qrcode.vue-next`仅支持在单个段中对文本进行编码。所使用的编码库进行最少的检测，以确定所编码的文本是否可以遵循数字或字母数字模式的优化路径，从而允许对更多数据进行编码。否则，它将按照字节模式进行编码。此模式包括支持多字节Unicode字符（如汉字），但不支持优化的汉字编码模式。.
