@@ -92,8 +92,4 @@ const qrcodeProps = {
   <QRCodeCanvas v-bind="qrcodeProps" />
   <br />
   <QRCodeSVG v-bind="qrcodeProps" />
-  <hr />
-  <QRCode>
-    <template #status></template>
-  </QRCode>
 </template>
