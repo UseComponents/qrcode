@@ -64,6 +64,7 @@ const QRCode = defineComponent({
             <div class={['qrcodeMask']}>
               {status === 'loading' && (slots.status?.() ?? <div>加载中...</div>)}
               {status === 'expired' && <div class={['qrcodeExpired']}>{ slots.status?.() ?? '已过期' }</div>}
+              {status === 'scanned' && <div class={['qrcodeScanned']}>{ slots.status?.() ?? '已扫描' }</div>}
             </div>
           )}
           {type === 'svg' ? (

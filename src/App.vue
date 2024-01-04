@@ -62,6 +62,7 @@ const qrcodeProps = {
     <template #status>加载中...</template>
   </QRCode>
   <QRCode value="https://vuejs.org" type="svg" status="expired" />
+  <QRCode value="https://vuejs.org" type="svg" status="scanned" />
   <hr />
   <button @click="decline">- small</button>
   <button @click="increase">+ large</button>
