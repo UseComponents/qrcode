@@ -41,8 +41,7 @@
   text-align: center;
 }
 .qrcode > .qrcodeMask > .qrcodeExpired,
-.qrcode > .qrcodeMask > .qrcodeScanned
-{
+.qrcode > .qrcodeMask > .qrcodeScanned {
   color: rgba(0, 0, 0, 0.88);
 }
 

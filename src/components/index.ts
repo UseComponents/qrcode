@@ -12,9 +12,9 @@ QRCode.install = (app: App) => {
 
 export { QRCodeCanvas, QRCodeSVG }
 
-export default QRCode as typeof QRCode & 
+export default QRCode as typeof QRCode &
   Plugin & {
     readonly QRCodeCanvas: typeof QRCodeCanvas
     readonly QRCodeSVG: typeof QRCodeSVG
   }
-export type { QRCodeProps } 
+export type { QRCodeProps }
