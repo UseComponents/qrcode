@@ -1,6 +1,10 @@
-# QRCode
+# qrcode.vue-next
 
 [qrcode.react](https://github.com/zpao/qrcode.react)的vue版本实现，最开始是[ant-design-vue](https://www.antdv.com)在QRCode组件中完成迁移，此仓库将其剥离出来，不是重复造轮子，而是满足在有使用二维码场景但组件库选型不是ant-design-vue的情况下，能够使用到[qrcode.react](https://github.com/zpao/qrcode.react)这一业界优秀实现，感谢qrcode.react与ant-design-vue为开源做出的贡献
+
+## 在线预览
+
+[qrcode.vue-next](https://usecomponents.github.io/qrcode/)
 
 ## 安装
 
@@ -72,8 +76,9 @@ const qrcodeProps = {
 | `errorLevel` | `'L'` \| `'M'` \| `'Q'` \| `'H'` | `'L'` | 二维码纠错等级 |
 | `icon` | `string` | - | 二维码中的图片地址 |
 | `iconSize` | `number` | `40` | 二维码中图片的大小 |
+| `iconSettings` | `object` | `{x: undefined, y: undefined, excavate: true}` | 二维码中图片的设置 |
 | `size` | `number` | `160` | 二维码渲染大小 |
-| `status` | `'active'` \| `'expired'` \| `'loading'` | `'active'` | 二维码状态 |
+| `status` | `'active'` \| `'expired'` \| `'loading'` \| `'scanned'` | `'active'` | 二维码状态 |
 | `type` | `'canvas'` \| `'svg'` | `'canvas'` | 渲染类型 |
 | `value` | `string` | - | 扫描后的地址 |
 

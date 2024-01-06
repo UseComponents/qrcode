@@ -38,6 +38,7 @@ export const qrcodeProps = () => {
 
     icon: String,
     iconSize: { type: Number, default: 40 },
+    iconSettings: objectType<Pick<ImageSettings, 'x' | 'y' | 'excavate'>>(),
 
     status: stringType<'active' | 'expired' | 'loading' | 'scanned'>('active'),
     bordered: { type: Boolean, default: true }

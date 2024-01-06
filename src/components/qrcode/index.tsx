@@ -32,15 +32,18 @@ const QRCode = defineComponent({
         errorLevel = 'M',
         type = 'canvas',
         bordered = true,
-        status = 'active'
+        status = 'active',
+        iconSettings = {
+          x: undefined,
+          y: undefined,
+          excavate: true
+        }
       } = props
       const imageSettings: QRCodeProps['imageSettings'] = {
         src: icon,
-        x: undefined,
-        y: undefined,
         height: iconSize,
         width: iconSize,
-        excavate: true
+        ...iconSettings
       }
       const qrCodeProps = {
         value,
@@ -63,8 +66,12 @@ const QRCode = defineComponent({
           {status !== 'active' && (
             <div class={['qrcodeMask']}>
               {status === 'loading' && (slots.status?.() ?? <div>加载中...</div>)}
-              {status === 'expired' && <div class={['qrcodeExpired']}>{ slots.status?.() ?? '已过期' }</div>}
-              {status === 'scanned' && <div class={['qrcodeScanned']}>{ slots.status?.() ?? '已扫描' }</div>}
+              {status === 'expired' && (
+                <div class={['qrcodeExpired']}>{slots.status?.() ?? '已过期'}</div>
+              )}
+              {status === 'scanned' && (
+                <div class={['qrcodeScanned']}>{slots.status?.() ?? '已扫描'}</div>
+              )}
             </div>
           )}
           {type === 'svg' ? (
