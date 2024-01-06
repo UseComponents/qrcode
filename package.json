@@ -1,7 +1,7 @@
 {
   "name": "qrcode.vue-next",
   "type": "module",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "keywords": [
     "qrcode",
     "vue",
@@ -48,7 +48,7 @@
     "build:docs": "vite build --config vite.build.config.ts"
   },
   "dependencies": {
-    "vue": "^3.4.3"
+    "vue": "^3.4.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.1",
@@ -67,9 +67,9 @@
     "npm-run-all2": "^6.1.1",
     "prettier": "^3.1.1",
     "typescript": "~5.2.2",
-    "vite": "^5.0.10",
+    "vite": "^5.0.11",
     "vite-plugin-dts": "^3.7.0",
-    "vite-plugin-vue-devtools": "^7.0.2",
+    "vite-plugin-vue-devtools": "^7.0.5",
     "vitest": "^0.34.6",
     "vue-tsc": "^1.8.27"
   }
