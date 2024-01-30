@@ -40,6 +40,8 @@ import QRCode from "qrcode.vue-next";
     :iconSettings="${centerImage.value ? undefined : JSON.stringify(iconSettings)}"
     :status="${status.value}"
     :bordered="${bordered.value}"
+    @change="() => console.log('change')"
+    @refresh="() => console.log('refresh')"
   />
 </template>
 `
@@ -48,7 +50,7 @@ import QRCode from "qrcode.vue-next";
 
 <template>
   <h1>
-    QRCode.vue-next Demo - v<a
+    qrcode.vue-next Demo - v<a
       :href="`https://www.npmjs.com/package/qrcode.vue-next/v/${version}`"
       target="_blank"
       >{{ version }}</a
@@ -142,6 +144,8 @@ import QRCode from "qrcode.vue-next";
             y: centerImage ? undefined : imageY,
             excavate: excavate
           }"
+          @change="() => console.log('change')"
+          @refresh="() => console.log('refresh')"
         />
       </fieldset>
     </div>

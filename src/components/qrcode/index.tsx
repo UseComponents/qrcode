@@ -13,8 +13,12 @@ const QRCode = defineComponent({
     status?: any
     icon?: any
   }>,
-  setup(props, { expose, slots }) {
+  emits: ['change', 'refresh'],
+  setup(props, { expose, slots, emit }) {
     const qrCodeCanvas = ref()
+    const handleChange = () => {
+      emit('change')
+    }
     expose({
       toDataURL: (type?: string, quality?: any) => {
         return qrCodeCanvas.value?.toDataURL(type, quality)
@@ -67,7 +71,14 @@ const QRCode = defineComponent({
             <div class={['qrcodeMask']}>
               {status === 'loading' && (slots.status?.() ?? <div>加载中...</div>)}
               {status === 'expired' && (
-                <div class={['qrcodeExpired']}>{slots.status?.() ?? '已过期'}</div>
+                <div class={['qrcodeExpired']}>
+                  {slots.status?.() ?? (
+                    <>
+                      <p>二维码已过期</p>
+                      <button onClick={() => emit('refresh')}>点击刷新</button>
+                    </>
+                  )}
+                </div>
               )}
               {status === 'scanned' && (
                 <div class={['qrcodeScanned']}>{slots.status?.() ?? '已扫描'}</div>
@@ -75,9 +86,9 @@ const QRCode = defineComponent({
             </div>
           )}
           {type === 'svg' ? (
-            <QRCodeSVG {...qrCodeProps} />
+            <QRCodeSVG {...qrCodeProps} onChange={handleChange} />
           ) : (
-            <QRCodeCanvas ref={qrCodeCanvas} {...qrCodeProps} />
+            <QRCodeCanvas ref={qrCodeCanvas} {...qrCodeProps} onChange={handleChange} />
           )}
         </div>
       )

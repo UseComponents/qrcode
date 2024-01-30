@@ -41,6 +41,8 @@ export const qrcodeProps = () => {
     iconSettings: objectType<Pick<ImageSettings, 'x' | 'y' | 'excavate'>>(),
 
     status: stringType<'active' | 'expired' | 'loading' | 'scanned'>('active'),
-    bordered: { type: Boolean, default: true }
+    bordered: { type: Boolean, default: true },
+    onChange: Function as PropType<() => void>,
+    onRefresh: Function as PropType<() => void>
   }
 }

@@ -2,7 +2,6 @@ import type { CSSProperties } from 'vue'
 import { defineComponent, shallowRef, watch, computed, watchEffect } from 'vue'
 import type { ImageSettings } from './interface'
 import { qrProps } from './interface'
-
 import qrcodegen from './qrcodegen'
 
 type Modules = ReturnType<qrcodegen.QrCode['getModules']>
@@ -143,8 +142,15 @@ const SUPPORTS_PATH2D = (function () {
 export const QRCodeCanvas = defineComponent({
   name: 'QRCodeCanvas',
   inheritAttrs: false,
-  props: { ...qrProps(), level: String, bgColor: String, fgColor: String, marginSize: Number },
-  setup(props, { attrs, expose }) {
+  props: {
+    ...qrProps(),
+    level: String,
+    bgColor: String,
+    fgColor: String,
+    marginSize: Number,
+    onChange: Function
+  },
+  setup(props, { attrs, expose, emit }) {
     const imgSrc = computed(() => props.imageSettings?.src)
     const _canvas = shallowRef<HTMLCanvasElement | null>(null)
     const _image = shallowRef<HTMLImageElement | null>(null)
@@ -230,6 +236,7 @@ export const QRCodeCanvas = defineComponent({
               calculatedImageSettings.h
             )
           }
+          emit('change')
         }
       },
       { flush: 'post' }
@@ -276,9 +283,10 @@ export const QRCodeSVG = defineComponent({
     bgColor: String,
     fgColor: String,
     marginSize: Number,
-    title: String
+    title: String,
+    onChange: Function
   },
-  setup(props) {
+  setup(props, { emit }) {
     let cells = null
     let margin = null
     let numCells: unknown = null
@@ -327,6 +335,7 @@ export const QRCodeSVG = defineComponent({
       // For level 1, 441 nodes -> 2
       // For level 40, 31329 -> 2
       fgPath = generatePath(cells, margin)
+      emit('change')
     })
 
     return () => {

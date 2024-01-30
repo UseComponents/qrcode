@@ -68,6 +68,7 @@ const qrcodeProps = {
 ```
 
 ## 封装后的API，基于antd
+
 | 参数 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ------------- | ---- |
 | `bgColor` | `string` | `'transparent'` | 二维码背景颜色 |
@@ -82,16 +83,23 @@ const qrcodeProps = {
 | `type` | `'canvas'` \| `'svg'` | `'canvas'` | 渲染类型 |
 | `value` | `string` | - | 扫描后的地址 |
 
+### 事件
+
+| 事件名 | 说明 | 回调参数 |
+| ---- | ---- | ---- |
+| `change` | 二维码绘制完成时触发 | () => void |
+| `refresh` | 点击刷新按钮时触发 | () => void |
+
 ## 原本的API
 
 | prop            | type                         | default value | note |
 | --------------- | ---------------------------- | ------------- | ---- |
-| `value`         | `string`                     |
-| `size`          | `number`                     | `128`         |
+| `value`         | `string`                     |               |      |
+| `size`          | `number`                     | `128`         |      |
 | `bgColor`       | `string`                     | `"#FFFFFF"`   | CSS color |
 | `fgColor`       | `string`                     | `"#000000"`   | CSS color |
-| `level`         | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |
-| `minVersion`    | `number` (1-40)              | `1`           | QR Code versions are 1-40. The optimal (lowest) version is determined for the `value` provided, using this minimum as the lower bound.
+| `level`         | `string` (`'L' 'M' 'Q' 'H'`) | `'L'`         |           |
+| `minVersion`    | `number` (1-40)              | `1`           | QR Code versions are 1-40. The optimal (lowest) version is determined for the `value` provided, using this minimum as the lower bound. |
 | `includeMargin` | `boolean`                    | `false`       | **DEPRECATED**. This is being removed in favor of `marginSize` |
 | `marginSize`    | `number`                     | `0`           | Specifies the number of _modules_ to use for margin around the symbol. The QR Code specification requires `4`, however you may use other values. Values will be turned to integers with `Math.floor`. Overrides `includeMargin` default value when specified |
 | `imageSettings` | `object`                     |               | See below |
@@ -100,13 +108,13 @@ const qrcodeProps = {
 
 | field      | type      | default value     | note |
 | ---------- | --------- | ----------------- | ---- |
-| `src`      | `string`  |
+| `src`      | `string`  |                   |      |
 | `x`        | `number`  | none              | Will attempt to center if not specified |
 | `y`        | `number`  | none              | Will attempt to center if not specified |
-| `height`   | `number`  | 10% of `size`     |
-| `width`    | `number`  | 10% of `size`     |
-| `excavate` | `boolean` | `false`           |
-| `opacity`  | `number`  | 1                 |
+| `height`   | `number`  | 10% of `size`     |      |
+| `width`    | `number`  | 10% of `size`     |      |
+| `excavate` | `boolean` | `false`           |      |
+| `opacity`  | `number`  | 1                 |      |
 
 ## 自定义样式
 
