@@ -25,11 +25,11 @@ importers:
         specifier: ^18.19.112
         version: 18.19.112
       '@vitejs/plugin-vue':
-        specifier: ^5.2.4
-        version: 5.2.4(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))
+        specifier: ^6.0.0
+        version: 6.0.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))
       '@vitejs/plugin-vue-jsx':
-        specifier: ^3.1.0
-        version: 3.1.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))
+        specifier: ^5.0.0
+        version: 5.0.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))
       '@vue/eslint-config-prettier':
         specifier: ^8.0.0
         version: 8.0.0(eslint@8.57.1)(prettier@3.6.1)
@@ -608,6 +608,9 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
+  '@rolldown/pluginutils@1.0.0-beta.19':
+    resolution: {integrity: sha512-3FL3mnMbPu0muGOCaKAhhFEYmqv9eTfPSJRJmANrCwtgK8VuxpsZDGK+m0LYAGoyO8+0j5uRe4PeyPDK1yA/hA==}
+
   '@rollup/pluginutils@5.2.0':
     resolution: {integrity: sha512-qWJ2ZTbmumwiLFomfzTyt5Kng4hwPi9rwCYN4SHb6eaRU1KNO4ccxINHr/VhH4GgPlt1XfSTLX2LBTme8ne4Zw==}
     engines: {node: '>=14.0.0'}
@@ -849,18 +852,18 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@vitejs/plugin-vue-jsx@3.1.0':
-    resolution: {integrity: sha512-w9M6F3LSEU5kszVb9An2/MmXNxocAnUb3WhRr8bHlimhDrXNt6n6D2nJQR3UXpGlZHh/EsgouOHCsM8V3Ln+WA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  '@vitejs/plugin-vue-jsx@5.0.0':
+    resolution: {integrity: sha512-wsUq9YvXvXNUsyTWUHEPCGrnrF5bsnvQlg/yKJsALfV4MSVXp9IS9uiCfLXRUSpX806+zaDm2Z9yd6tU9Gaz0A==}
+    engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
-      vite: ^4.0.0 || ^5.0.0
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
       vue: ^3.0.0
 
-  '@vitejs/plugin-vue@5.2.4':
-    resolution: {integrity: sha512-7Yx/SXSOcQq5HiiV3orevHUFn+pmMB4cgbEkDYgnkUWb0WfeQ/wa2yFv6D5ICiCQOVpjA7vYDXrC7AGO8yjDHA==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  '@vitejs/plugin-vue@6.0.0':
+    resolution: {integrity: sha512-iAliE72WsdhjzTOp2DtvKThq1VBC4REhwRcaA+zPAAph6I+OQhUXv+Xu2KS7ElxYtb7Zc/3R30Hwv1DxEo7NXQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
-      vite: ^5.0.0 || ^6.0.0
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
       vue: ^3.2.25
 
   '@vitest/expect@0.34.6':
@@ -3027,6 +3030,8 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
+  '@rolldown/pluginutils@1.0.0-beta.19': {}
+
   '@rollup/pluginutils@5.2.0(rollup@4.44.0)':
     dependencies:
       '@types/estree': 1.0.8
@@ -3253,18 +3258,20 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-vue-jsx@3.1.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))':
+  '@vitejs/plugin-vue-jsx@5.0.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))':
     dependencies:
       '@babel/core': 7.27.4
       '@babel/plugin-transform-typescript': 7.27.1(@babel/core@7.27.4)
+      '@rolldown/pluginutils': 1.0.0-beta.19
       '@vue/babel-plugin-jsx': 1.4.0(@babel/core@7.27.4)
       vite: 7.0.0(@types/node@18.19.112)(lightningcss@1.30.1)
       vue: 3.5.17(typescript@5.2.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@5.2.4(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))':
+  '@vitejs/plugin-vue@6.0.0(vite@7.0.0(@types/node@18.19.112)(lightningcss@1.30.1))(vue@3.5.17(typescript@5.2.2))':
     dependencies:
+      '@rolldown/pluginutils': 1.0.0-beta.19
       vite: 7.0.0(@types/node@18.19.112)(lightningcss@1.30.1)
       vue: 3.5.17(typescript@5.2.2)
 
