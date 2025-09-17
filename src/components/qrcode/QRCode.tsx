@@ -246,7 +246,8 @@ export const QRCodeCanvas = defineComponent({
     })
 
     return () => {
-      const size = props.size ?? DEFAULT_SIZE
+      const { size = DEFAULT_SIZE } = props
+
       const canvasStyle = { height: `${size}px`, width: `${size}px` }
 
       let img = null
@@ -263,6 +264,7 @@ export const QRCodeCanvas = defineComponent({
           />
         )
       }
+
       return (
         <>
           <canvas {...attrs} style={[canvasStyle, attrs.style as CSSProperties]} ref={_canvas} />
@@ -339,11 +341,16 @@ export const QRCodeSVG = defineComponent({
     })
 
     return () => {
-      const bgColor = props.bgColor && DEFAULT_BGCOLOR
-      const fgColor = props.fgColor && DEFAULT_FGCOLOR
+      const {
+        bgColor = DEFAULT_BGCOLOR,
+        fgColor = DEFAULT_FGCOLOR,
+        size = DEFAULT_SIZE,
+        title
+      } = props
+
       return (
-        <svg height={props.size} width={props.size} viewBox={`0 0 ${numCells} ${numCells}`}>
-          {!!props.title && <title>{props.title}</title>}
+        <svg height={size} width={size} viewBox={`0 0 ${numCells} ${numCells}`}>
+          {!!title && <title>{title}</title>}
           <path
             fill={bgColor}
             d={`M0,0 h${numCells}v${numCells}H0z`}

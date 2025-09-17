@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@tsconfig/node-lts':
-        specifier: ^22.0.2
-        version: 22.0.2
       vue:
         specifier: ^3.5.17
         version: 3.5.17(typescript@5.2.2)
@@ -18,6 +15,9 @@ importers:
       '@rushstack/eslint-patch':
         specifier: ^1.11.0
         version: 1.11.0
+      '@tsconfig/node-lts':
+        specifier: ^22.0.2
+        version: 22.0.2
       '@types/jsdom':
         specifier: ^21.1.7
         version: 21.1.7
