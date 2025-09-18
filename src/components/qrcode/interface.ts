@@ -24,7 +24,8 @@ export const qrProps = () => {
     color: String,
     bgColor: String,
     includeMargin: Boolean,
-    imageSettings: objectType<ImageSettings>()
+    imageSettings: objectType<ImageSettings>(),
+    title: String,
   }
 }
 

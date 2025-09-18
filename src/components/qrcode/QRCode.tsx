@@ -246,7 +246,7 @@ export const QRCodeCanvas = defineComponent({
     })
 
     return () => {
-      const { size = DEFAULT_SIZE } = props
+      const { size = DEFAULT_SIZE, title } = props
 
       const canvasStyle = { height: `${size}px`, width: `${size}px` }
 
@@ -267,7 +267,7 @@ export const QRCodeCanvas = defineComponent({
 
       return (
         <>
-          <canvas {...attrs} style={[canvasStyle, attrs.style as CSSProperties]} ref={_canvas} />
+          <canvas {...attrs} style={[canvasStyle, attrs.style as CSSProperties]} ref={_canvas} role='img' title={title} />
           {img}
         </>
       )
@@ -347,7 +347,7 @@ export const QRCodeSVG = defineComponent({
         size = DEFAULT_SIZE,
         title
       } = props
-
+      console.log('title', title)
       return (
         <svg height={size} width={size} viewBox={`0 0 ${numCells} ${numCells}`}>
           {!!title && <title>{title}</title>}

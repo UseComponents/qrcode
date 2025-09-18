@@ -8,6 +8,7 @@ const bgColor = ref('#ffffff')
 const color = ref('#000000')
 const level = ref('L')
 const value = ref('https://vuejs.org')
+const title = ref()
 const type = ref<QRCodeProps['type']>('canvas')
 const includeImage = ref(false)
 const icon = ref('https://vuejs.org/images/logo.png')
@@ -30,6 +31,7 @@ import QRCode from "qrcode.vue-next";
 <template>
   <QRCode
     :value="${value.value}"
+    :title="${title.value}"
     :size="${size.value}"
     :bgColor="${bgColor.value}"
     :color="${color.value}"
@@ -50,11 +52,8 @@ import QRCode from "qrcode.vue-next";
 
 <template>
   <h1>
-    qrcode.vue-next Demo - v<a
-      :href="`https://www.npmjs.com/package/qrcode.vue-next/v/${version}`"
-      target="_blank"
-      >{{ version }}</a
-    >
+    qrcode.vue-next Demo - v<a :href="`https://www.npmjs.com/package/qrcode.vue-next/v/${version}`" target="_blank">{{
+      version }}</a>
   </h1>
   <div class="content">
     <fieldset>
@@ -65,8 +64,7 @@ import QRCode from "qrcode.vue-next";
       <br />
       <label>二维码颜色-Color: <input type="color" v-model="color" /></label>
       <br />
-      <label
-        >二维码纠错等级-Error Level:
+      <label>二维码纠错等级-Error Level:
         <select v-model="level">
           <option value="L">L</option>
           <option value="M">M</option>
@@ -79,16 +77,17 @@ import QRCode from "qrcode.vue-next";
       <label>扫描后的地址-Value: <textarea v-model="value" /></label>
       <br />
       <br />
-      <label
-        >渲染类型-Type:
+      <label>二维码标题-Title: <input type="text" v-model="title" /></label>
+      <br />
+      <br />
+      <label>渲染类型-Type:
         <select v-model="type">
           <option value="canvas">Canvas</option>
           <option value="svg">SVG</option>
         </select>
       </label>
       <br />
-      <label
-        >二维码状态-Status:
+      <label>二维码状态-Status:
         <select v-model="status">
           <option value="active">Active</option>
           <option value="expired">Expired</option>
@@ -110,15 +109,11 @@ import QRCode from "qrcode.vue-next";
         <br />
         <fieldset :disabled="centerImage">
           <legend>Image Seeings</legend>
-          <label
-            >Image X {{ imageX }}:
-            <input type="range" min="0" :max="size - (12 + 1) * 2 - iconSize" v-model="imageX"
-          /></label>
+          <label>Image X {{ imageX }}:
+            <input type="range" min="0" :max="size - (12 + 1) * 2 - iconSize" v-model="imageX" /></label>
           <br />
-          <label
-            >Image Y {{ imageY }}:
-            <input type="range" min="0" :max="size - (12 + 1) * 2 - iconSize" v-model="imageY"
-          /></label>
+          <label>Image Y {{ imageY }}:
+            <input type="range" min="0" :max="size - (12 + 1) * 2 - iconSize" v-model="imageY" /></label>
         </fieldset>
         <br />
         <label>图标是否有背景: <input type="checkbox" v-model="excavate" /></label>
@@ -128,25 +123,13 @@ import QRCode from "qrcode.vue-next";
       <fieldset>
         <legend>Output Code</legend>
         <textarea cols="80" :rows="outputCode.split('\n').length" :value="outputCode" readonly />
-        <QRCode
-          :value="value"
-          :size="size"
-          :level="level"
-          :bg-color="bgColor"
-          :color="color"
-          :type="type"
-          :icon="includeImage ? icon : undefined"
-          :icon-size="includeImage ? iconSize : undefined"
-          :status="status"
-          :bordered="bordered"
-          :icon-settings="{
+        <QRCode :value="value" :title="title" :size="size" :level="level" :bg-color="bgColor" :color="color" :type="type"
+          :icon="includeImage ? icon : undefined" :icon-size="includeImage ? iconSize : undefined" :status="status"
+          :bordered="bordered" :icon-settings="{
             x: centerImage ? undefined : imageX,
             y: centerImage ? undefined : imageY,
             excavate: excavate
-          }"
-          @change="() => console.log('change')"
-          @refresh="() => console.log('refresh')"
-        />
+          }" @change="() => console.log('change')" @refresh="() => console.log('refresh')" />
       </fieldset>
     </div>
   </div>

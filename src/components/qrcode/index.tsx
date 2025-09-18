@@ -28,6 +28,7 @@ const QRCode = defineComponent({
     return () => {
       const {
         value,
+        title,
         icon = '',
         size = 160,
         iconSize = 40,
@@ -51,6 +52,7 @@ const QRCode = defineComponent({
       }
       const qrCodeProps = {
         value,
+        title,
         size: size - (12 + 1) * 2,
         level: errorLevel,
         bgColor,
