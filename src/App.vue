@@ -2,23 +2,25 @@
 import { ref, computed } from 'vue'
 import QRCode from './components'
 import type { QRCodeProps } from './components'
-import { version } from '../package.json'
+  import { version } from '../package.json'
+
+  const qrcodeRef = ref<InstanceType<typeof QRCode> | null>(null)
 const size = ref(160)
 const bgColor = ref('#ffffff')
 const color = ref('#000000')
-const level = ref('L')
-const value = ref('https://vuejs.org')
+const level = ref<QRCodeProps['errorLevel']>('L')
+const value = ref('https://cn.vuejs.org')
 const title = ref()
 const type = ref<QRCodeProps['type']>('canvas')
 const includeImage = ref(false)
-const icon = ref('https://vuejs.org/images/logo.png')
+const icon = ref('https://cn.vuejs.org/images/logo.png')
 const iconSize = ref(40)
 const status = ref<QRCodeProps['status']>('active')
 const bordered = ref(true)
 const centerImage = ref(true)
 const imageX = ref(0)
 const imageY = ref(0)
-const excavate = ref(false)
+const excavate = ref(true)
 const outputCode = computed(() => {
   const iconSettings = {
     x: imageX.value,
@@ -26,16 +28,33 @@ const outputCode = computed(() => {
     excavate: excavate.value
   }
   return `
-import QRCode from "qrcode.vue-next";
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import QRCode from "qrcode.vue-next";
+
+  const qrcodeRef = ref()
+  function downloadQRCode() {
+    const url = qrcodeRef.value?.toDataURL();
+    if (url) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = type.value === 'canvas' ? 'qrcode.png' : 'qrcode.svg';
+      document.body.appendChild(a)
+      a.click();
+      document.body.removeChild(a)
+    }
+  }
+<script>
 
 <template>
   <QRCode
+    ref="qrcodeRef"
     :value="${value.value}"
     :title="${title.value}"
     :size="${size.value}"
     :bgColor="${bgColor.value}"
     :color="${color.value}"
-    :level="${level.value}"
+    :error-level="${level.value}"
     :type="${type.value}"
     :icon="${includeImage.value ? icon.value : undefined}"
     :iconSize="${includeImage.value ? iconSize.value : undefined}"
@@ -48,6 +67,17 @@ import QRCode from "qrcode.vue-next";
 </template>
 `
 })
+  function downloadQRCode() {
+    const url = qrcodeRef.value?.toDataURL();
+    if (url) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = type.value === 'canvas' ? 'qrcode.png' : 'qrcode.svg';
+      document.body.appendChild(a)
+      a.click();
+      document.body.removeChild(a)
+    }
+  }
 </script>
 
 <template>
@@ -122,14 +152,15 @@ import QRCode from "qrcode.vue-next";
     <div>
       <fieldset>
         <legend>Output Code</legend>
-        <textarea cols="80" :rows="outputCode.split('\n').length" :value="outputCode" readonly />
-        <QRCode :value="value" :title="title" :size="size" :level="level" :bg-color="bgColor" :color="color" :type="type"
+        <textarea name="output" title="output qrcode demo" placeholder="-" cols="80" :rows="outputCode.split('\n').length" :value="outputCode" readonly />
+        <QRCode ref="qrcodeRef" :value="value" :title="title" :size="size" :error-level="level" :bg-color="bgColor" :color="color" :type="type"
           :icon="includeImage ? icon : undefined" :icon-size="includeImage ? iconSize : undefined" :status="status"
           :bordered="bordered" :icon-settings="{
             x: centerImage ? undefined : imageX,
             y: centerImage ? undefined : imageY,
             excavate: excavate
           }" @change="() => console.log('change')" @refresh="() => console.log('refresh')" />
+        <button @click="downloadQRCode()">download</button>  
       </fieldset>
     </div>
   </div>

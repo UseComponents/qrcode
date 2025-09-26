@@ -1,49 +1,66 @@
-import type { PropType } from 'vue'
+import type { Ecc, QrCode } from './libs/qrcodegen'
 
-export function objectType<T = {}>(defaultVal?: T) {
-  return { type: Object as PropType<T>, default: defaultVal as T }
+export type Modules = ReturnType<QrCode['getModules']>
+export interface Excavation {
+  x: number
+  y: number
+  w: number
+  h: number
 }
-export function stringType<T extends string = string>(defaultVal?: T) {
-  return { type: String as unknown as PropType<T>, default: defaultVal as T }
+export type ErrorCorrectionLevel = 'L' | 'M' | 'Q' | 'H'
+export type CrossOrigin = 'anonymous' | 'use-credentials' | '' | undefined
+export type ERROR_LEVEL_MAPPED_TYPE = {
+  [index in ErrorCorrectionLevel]: Ecc
 }
-
 export interface ImageSettings {
-  src: string
+  src?: string
   height: number
   width: number
   excavate: boolean
   x?: number
   y?: number
+  crossOrigin?: CrossOrigin
+  opacity?: number
 }
 
-export const qrProps = () => {
-  return {
-    size: { type: Number, default: 160 },
-    value: { type: String, required: true },
-    type: stringType<'canvas' | 'svg'>('canvas'),
-    color: String,
-    bgColor: String,
-    includeMargin: Boolean,
-    imageSettings: objectType<ImageSettings>(),
-    title: String,
-  }
+export interface QRProps {
+  size?: number
+  value: string
+  level?: ErrorCorrectionLevel
+  color?: string
+  bgColor?: string
+  fgColor?: string
+  includeMargin?: boolean
+  marginSize?: number
+  imageSettings?: ImageSettings
+  title?: string
+  minVersion?: number
+  boostLevel?: boolean
 }
 
-export const qrcodeProps = () => {
-  return {
-    ...qrProps(),
-    errorLevel: {
-      type: String as PropType<'L' | 'M' | 'Q' | 'H'>,
-      default: 'M'
-    },
+export interface QRCodeProps extends QRProps {
+  type?: 'canvas' | 'svg'
+  errorLevel?: ErrorCorrectionLevel
+  icon?: string
+  iconSize?: number | { width: number; height: number }
+  iconSettings?: Pick<ImageSettings, 'x' | 'y' | 'excavate'>
+  status?: 'active' | 'expired' | 'loading' | 'scanned'
+  bordered?: boolean
+  onChange?: () => void
+  onRefresh?: () => void
+}
 
-    icon: String,
-    iconSize: { type: Number, default: 40 },
-    iconSettings: objectType<Pick<ImageSettings, 'x' | 'y' | 'excavate'>>(),
+export interface QRCodeEmits {
+  (e: 'refresh'): void
+  (e: 'change'): void
+}
 
-    status: stringType<'active' | 'expired' | 'loading' | 'scanned'>('active'),
-    bordered: { type: Boolean, default: true },
-    onChange: Function as PropType<() => void>,
-    onRefresh: Function as PropType<() => void>
-  }
+export interface QRCodeSlots {
+  statusRender: ({
+    status,
+    onRefresh
+  }: {
+    status: QRCodeProps['status']
+    onRefresh: QRCodeProps['onRefresh']
+  }) => unknown
 }

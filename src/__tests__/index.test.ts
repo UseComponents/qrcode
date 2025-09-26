@@ -4,9 +4,10 @@ import QRCode from '../components/index'
 
 describe('QRCode test', () => {
   it('should correct render', () => {
-    const wrapper = mount({
-      render() {
-        return <QRCode value="test" icon="test" />
+    const wrapper = mount(QRCode, {
+      props: {
+        value: 'https://www.baidu.com',
+        icon: 'https://www.baidu.com/favicon.ico',
       }
     })
     expect(wrapper.find('.qrcode')).toBeTruthy()
